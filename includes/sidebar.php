@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Core</div>
-                <a class="nav-link <?php echo ($page == "dashboard")? 'active' : '';  ?>" href="/">
+                <a class="nav-link <?php echo ($page == 'dashboard') ? 'active' : ''; ?>" href="index.php?hal=dashboard">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
@@ -13,60 +13,64 @@
                     Data Buku
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="collapseLayouts" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Daftar Buku</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Tambah Buku</a>
+                        <a class="nav-link" href="index.php?hal=buku">Daftar Buku</a>
+                        <a class="nav-link" href="index.php?hal=tambah-buku">Tambah Buku</a>
                     </nav>
                 </div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+<?php 
+    $kategori_active = (
+        $page == "daftar-kategori" ||
+        $page == "tambah-kategori" || 
+        $page == "edit-kategori"
+    );
+?>
+                <a class="nav-link <?php echo $kategori_active ? 'active' : 'collapsed'; ?>" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="<?php echo $kategori_active ? 'true' : 'false'; ?>" aria-controls="collapsePages">
                     <div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>
                     Kategori
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse <?php echo $kategori_active ? 'show' : ''; ?>" id="collapsePages" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Daftar Kategori</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Tambah Kategori</a>
+                        <a class="nav-link <?php echo ($page == "daftar-kategori") ? "active" : ""; ?>" href="index.php?hal=daftar-kategori">Daftar Kategori</a>
+                        <a class="nav-link <?php echo ($page == "tambah-kategori") ? "active" : ""; ?>" href="index.php?hal=tambah-kategori">Tambah Kategori</a>
                     </nav>
                 </div>
-
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#colapsAnggota" aria-expanded="false" aria-controls="colapsAnggota">
                     <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                     Anggota
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="colapsAnggota" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="colapsAnggota" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Daftar Anggota</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Tambah Anggota</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Peminjaman</a>
+                        <a class="nav-link" href="index.php?hal=daftar-anggota">Daftar Anggota</a>
+                        <a class="nav-link" href="index.php?hal=tambah-anggota">Tambah Anggota</a>
                     </nav>
                 </div>
-
                 <div class="sb-sidenav-menu-heading">Transaksi</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#colapsPeminjaman" aria-expanded="false" aria-controls="colapsPeminjaman">
                     <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
                     Peminjaman
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="colapsPeminjaman" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="colapsPeminjaman" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Daftar Peminjaman</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Tambah Peminjaman</a>
+                        <a class="nav-link" href="#">Daftar Peminjaman</a>
+                        <a class="nav-link" href="#">Tambah Peminjaman</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#colapsPengembalian" aria-expanded="false" aria-controls="colapsPengembalian">
-                    <div class="sb-nav-link-icon"><i class="fas fa-industry"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fas fa-undo"></i></div>
                     Pengembalian
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="colapsPengembalian" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="colapsPengembalian" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Konfirmasi</a>
+                        <a class="nav-link" href="#">Konfirmasi</a>
                     </nav>
                 </div>
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="login.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-sign-out"></i></div>
                     Logout
                 </a>
